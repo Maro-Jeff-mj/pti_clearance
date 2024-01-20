@@ -1,0 +1,86 @@
+{% extends 'clearance-form-detail.html' %}
+{% block content %}
+<div class="container">
+
+    {% if details %}
+    
+    <div class="modal-body p-4 text-center">
+        <h5 class="mb-0 fw-light">Search result..</h5>
+    </div> <br> <br>
+
+    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">S/N</th>
+                <th scope="col">Surname</th>
+                <th scope="col">Othernames</th>
+                <th scope="col">Sex</th>
+                <th scope="col">Department</th>
+                <th scope="col">Student_affair</th>
+                <th scope="col">Student_union</th>
+                <th scope="col">School_library</th>
+                <th scope="col">Sports_office</th>
+                <th scope="col">Department</th>
+                <th scope="col">Hostel</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            {% for detail in details %}
+            <tr>
+                <th scope="row" >{{forloop.counter}}</th>
+                <td><a href="{% url 'clearance-form-detail' detail.pk %}" class="text-decoration-none text-black"> {{detail.surname}}</a></td>
+                <td>{{detail.othernames}}</td>
+                <td>{{detail.sex}}</td>
+                <td>{{detail.department|truncatewords:2}}</td>
+                <td>{% if detail.student_affair_review == 'approved' %}{{detail.student_affair_review}}
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" width="14" height="14"><path d="M6 0a6 6 0 1 1 0 12A6 6 0 0 1 6 0Zm-.705 8.737L9.63 4.403 8.392 3.166 5.295 6.263l-1.7-1.702L2.356 5.8l2.938 2.938Z"></path></svg>
+                    {% elif detail.student_affair_review == 'disapproved'  %} Denied <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" width="14" height="14"><path d="M1.757 10.243a6.001 6.001 0 1 1 8.488-8.486 6.001 6.001 0 0 1-8.488 8.486ZM6 4.763l-2-2L2.763 4l2 2-2 2L4 9.237l2-2 2 2L9.237 8l-2-2 2-2L8 2.763Z"></path></svg>
+                    {% else %}{{detail.student_affair_review}}
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" width="14" height="14"><path d="M4.855.708c.5-.896 1.79-.896 2.29 0l4.675 8.351a1.312 1.312 0 0 1-1.146 1.954H1.33A1.313 1.313 0 0 1 .183 9.058ZM7 7V3H5v4Zm-1 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"></path></svg>
+                    {% endif %}</td>
+                <td>
+                    {% if detail.sug_review == 'approved' %}{{detail.sug_review}}
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" width="14" height="14"><path d="M6 0a6 6 0 1 1 0 12A6 6 0 0 1 6 0Zm-.705 8.737L9.63 4.403 8.392 3.166 5.295 6.263l-1.7-1.702L2.356 5.8l2.938 2.938Z"></path></svg>
+                    {% elif detail.sug_review == 'disapproved'  %} Denied <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" width="14" height="14"><path d="M1.757 10.243a6.001 6.001 0 1 1 8.488-8.486 6.001 6.001 0 0 1-8.488 8.486ZM6 4.763l-2-2L2.763 4l2 2-2 2L4 9.237l2-2 2 2L9.237 8l-2-2 2-2L8 2.763Z"></path></svg>
+                    {% else %}{{detail.sug_review}}
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" width="14" height="14"><path d="M4.855.708c.5-.896 1.79-.896 2.29 0l4.675 8.351a1.312 1.312 0 0 1-1.146 1.954H1.33A1.313 1.313 0 0 1 .183 9.058ZM7 7V3H5v4Zm-1 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"></path></svg>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if detail.chief_liberian_review == 'approved' %}{{detail.chief_liberian_review}}
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" width="14" height="14"><path d="M6 0a6 6 0 1 1 0 12A6 6 0 0 1 6 0Zm-.705 8.737L9.63 4.403 8.392 3.166 5.295 6.263l-1.7-1.702L2.356 5.8l2.938 2.938Z"></path></svg>
+                    {% elif detail.chief_liberian_review == 'disapproved'  %} Denied <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" width="14" height="14"><path d="M1.757 10.243a6.001 6.001 0 1 1 8.488-8.486 6.001 6.001 0 0 1-8.488 8.486ZM6 4.763l-2-2L2.763 4l2 2-2 2L4 9.237l2-2 2 2L9.237 8l-2-2 2-2L8 2.763Z"></path></svg>
+                    {% else %}{{detail.chief_liberian_review}}
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" width="14" height="14"><path d="M4.855.708c.5-.896 1.79-.896 2.29 0l4.675 8.351a1.312 1.312 0 0 1-1.146 1.954H1.33A1.313 1.313 0 0 1 .183 9.058ZM7 7V3H5v4Zm-1 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"></path></svg>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if detail.sport_officer_review == 'approved' %}{{detail.sport_officer_review}}
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" width="14" height="14"><path d="M6 0a6 6 0 1 1 0 12A6 6 0 0 1 6 0Zm-.705 8.737L9.63 4.403 8.392 3.166 5.295 6.263l-1.7-1.702L2.356 5.8l2.938 2.938Z"></path></svg>
+                    {% elif detail.sport_officer_review == 'disapproved'  %} Denied <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" width="14" height="14"><path d="M1.757 10.243a6.001 6.001 0 1 1 8.488-8.486 6.001 6.001 0 0 1-8.488 8.486ZM6 4.763l-2-2L2.763 4l2 2-2 2L4 9.237l2-2 2 2L9.237 8l-2-2 2-2L8 2.763Z"></path></svg>
+                    {% else %}{{detail.sport_officer_review}}
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" width="14" height="14"><path d="M4.855.708c.5-.896 1.79-.896 2.29 0l4.675 8.351a1.312 1.312 0 0 1-1.146 1.954H1.33A1.313 1.313 0 0 1 .183 9.058ZM7 7V3H5v4Zm-1 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"></path></svg>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if detail.hod_review == 'approved' %}{{detail.hod_review}}
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" width="14" height="14"><path d="M6 0a6 6 0 1 1 0 12A6 6 0 0 1 6 0Zm-.705 8.737L9.63 4.403 8.392 3.166 5.295 6.263l-1.7-1.702L2.356 5.8l2.938 2.938Z"></path></svg>
+                    {% elif detail.hod_review == 'disapproved'  %} Denied <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" width="14" height="14"><path d="M1.757 10.243a6.001 6.001 0 1 1 8.488-8.486 6.001 6.001 0 0 1-8.488 8.486ZM6 4.763l-2-2L2.763 4l2 2-2 2L4 9.237l2-2 2 2L9.237 8l-2-2 2-2L8 2.763Z"></path></svg>
+                    {% else %}{{detail.hod_review}}
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" width="14" height="14"><path d="M4.855.708c.5-.896 1.79-.896 2.29 0l4.675 8.351a1.312 1.312 0 0 1-1.146 1.954H1.33A1.313 1.313 0 0 1 .183 9.058ZM7 7V3H5v4Zm-1 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"></path></svg>
+                    {% endif %}
+                </td>
+                <td>{% if detail.sex == 'Male' %} {{detail.get_male_status}} {% else %} {{detail.get_female_status}} {% endif %}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    {% else %}
+    <br><br>
+    <h1> Not Found</h1> <p>The requested resource was not found on this server.</p>
+    {% endif %}
+
+</div>
+{% endblock %}

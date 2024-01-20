@@ -1,0 +1,29 @@
+{% extends 'clearance-form-detail.html' %}
+{% block content %}
+
+<section class=" text-center container">
+    <div class="row ">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Petroleum Training Institute <br> P.M.B 20, Effrun <br> Delta State</h1>
+      </div>
+    </div>
+  </section>
+  <BR></BR>
+  <p class="text-center "><strong> STUDENTS CLEARANCE CERTIFICATE </strong></p>
+  <p class="text-center ">This is to certify that</p> <br>
+<dl class="row"> 
+    <dt class="col-3 text-uppercase">name of student:</dt>
+    <dd class="col-9 text-uppercase">{{user.studentprofile.surname}} {{user.studentprofile.othernames}}</dd><br>
+  
+    <dt class="col-3 text-uppercase">matric number:</dt>
+    <dd class="col-9 text-uppercase">{{user.studentprofile.matric_number}}</dd><br>
+  
+    <dt class="col-3 text-uppercase">program of study:</dt>
+    <dd class="col-9 text-uppercase">{{user.studentprofile.program_of_study}}</dd><br>
+    
+    <dt class="col-3 text-uppercase">department:</dt>
+    <dd class="col-9 text-uppercase">{{user.studentprofile.department}}</dd> <br> <br> <br>
+
+  <p class="text-center ">Has been cleared by all offices in the institution</p>
+  </dl>
+{% endblock %}
